@@ -1,28 +1,27 @@
-#include<iostream>
-using namespace std;
-
-
 class Solution {
 public:
-    int countGoodNumbers(long long n) {
-        int res = counter(n);
+    const long long MOD = 1e9+7;
+
+    long long power(long long x, long long n) {
+        long long res = 1;
+
+        while(n > 0) {
+            if(n & 1)
+                res = (res * x) % MOD;
+
+            x = (x * x) % MOD;
+            n >>= 1;
+        }
+
         return res;
     }
 
-    long long counter(long long n){
-        long long number = 1;
-        if (n == 0) return number % (10^9 +7); // base case
+    int countGoodNumbers(long long n) {
 
+        long long even = (n + 1) / 2;
+        long long odd = n / 2;
 
-        if (n &1) return counter(n-1) * 5;
-        else return counter(n-1) * 4;
-
+        return (power(5, even) * power(4, odd)) % MOD;
     }
 };
 
-
-int main(){
-        Solution s;
-        cout << s.countGoodNumbers(4) << endl;
-        return 0;
-    }
