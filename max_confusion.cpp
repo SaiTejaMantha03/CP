@@ -24,5 +24,5 @@ public:
 
 int main(){
     Solution S;
-    cout << S.maxConsecutiveAnswers("TFFT",2);
+    cout << S.maxConsecutiveAnswers("TTFTTFTT",1);
 }
